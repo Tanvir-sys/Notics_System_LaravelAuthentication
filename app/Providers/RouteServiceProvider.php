@@ -19,6 +19,17 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/home';
 
+
+     /**
+     * The path to the "home" route for your application.
+     *
+     * This is used by Laravel authentication to redirect users after login.
+     *
+     * @var string
+     */
+    public const Admin_Dashboard = '/admin';
+
+
     /**
      * The controller namespace for the application.
      *

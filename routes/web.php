@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NoticeController;
 use App\Http\Controllers\Covid19Controller ;
+use App\Http\Controllers\Backend\Auth\LoginController;
+use App\Http\Controllers\Backend\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +38,20 @@ Route::post('/Notice/update/{id}', [NoticeController::class, 'update'])->name('N
 Route::delete('/Notice/delete/{id}', [NoticeController::class, 'destroy'])->name('Notice.delete');
 
     
+});
+
+Route::prefix('admin')->group(function () {
+   
+    Route::get('/login', [LoginController::class, 'showlogin'])->name('Backendshowlogin');
+    Route::post('/login/submit', [Backend\Auth\LoginController::class, 'login'])->name('Backendloginsubmit');
+    Route::post('/logout/submit', [Backend\Auth\LoginController::class, 'logout'])->name('Backendlogout');
+
+
+    Route::get('/login/passwordreset', [Backend\Auth\ResetPasswordController::class, 'showlinkreqform'])->name('passwordreset');
+    Route::post('/login/passwordreset/submit', [Backend\Auth\ResetPasswordController::class, 'reset'])->name('passwordupdate');
+    
+    
+
 });
 
 
