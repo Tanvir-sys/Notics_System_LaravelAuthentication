@@ -43,8 +43,8 @@ Route::delete('/Notice/delete/{id}', [NoticeController::class, 'destroy'])->name
 Route::prefix('admin')->group(function () {
    
     Route::get('/login', [LoginController::class, 'showlogin'])->name('Backendshowlogin');
-    Route::post('/login/submit', [Backend\Auth\LoginController::class, 'login'])->name('Backendloginsubmit');
-    Route::post('/logout/submit', [Backend\Auth\LoginController::class, 'logout'])->name('Backendlogout');
+    Route::post('/login/submit', [LoginController::class, 'login'])->name('Backendloginsubmit');
+    Route::post('/logout/submit', [LoginController::class, 'logout'])->name('Backendlogout');
 
 
     Route::get('/login/passwordreset', [Backend\Auth\ResetPasswordController::class, 'showlinkreqform'])->name('passwordreset');

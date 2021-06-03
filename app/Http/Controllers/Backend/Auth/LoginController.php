@@ -29,7 +29,15 @@ class LoginController extends Controller
      */
     protected $redirectTo = RouteServiceProvider::Admin_Dashboard;
 
-    public function showlogin(Request $request){
+    public function showlogin(){
         return view('Backend.Auth.login');
+    }
+
+    public function login(Request $request)
+    {
+        return "hello";
+
+        //validation
+        
     }
 }
