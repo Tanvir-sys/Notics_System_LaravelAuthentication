@@ -35,9 +35,28 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
-        return "hello";
+       
 
         //validation
-        
+        $request->validate(
+
+            [
+                'wmail'=>'required|email',
+                'password'=>'required|min:8'
+            ]
+        ); 
+
+        //attempt to login logic implement
+
+        if(Auth::guard('admin')->Auth::attempt(['email' =>$request-> $email, 'password' => $request->$password],$request->remember )){
+
+            session()->flash('login Success','successfully Login');
+            return redirect()->intended(route('dashboard'));
+
+        }else{
+            seassion()->flash('login error','Invalid user email and password!!!');
+            return back();
+        }
+
     }
 }
